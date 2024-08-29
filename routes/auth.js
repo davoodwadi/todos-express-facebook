@@ -51,7 +51,8 @@ passport.use(
     {
       clientID: process.env["FACEBOOK_CLIENT_ID"],
       clientSecret: process.env["FACEBOOK_CLIENT_SECRET"],
-      callbackURL: "/oauth2/redirect/facebook",
+      callbackURL:
+        "https://todos-express-facebook.onrender.com/oauth2/redirect/facebook",
       state: true,
     },
     function verify(accessToken, refreshToken, profile, cb) {
