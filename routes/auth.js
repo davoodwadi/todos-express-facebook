@@ -49,8 +49,8 @@ console.log("clientidtest", process.env["FACEBOOK_CLIENT_ID_TEST"]);
 passport.use(
   new FacebookStrategy(
     {
-      clientID: process.env["FACEBOOK_CLIENT_ID"],
-      clientSecret: process.env["FACEBOOK_CLIENT_SECRET"],
+      clientID: process.env["FACEBOOK_CLIENT_ID_TEST"],
+      clientSecret: process.env["FACEBOOK_CLIENT_SECRET_TEST"],
       callbackURL:
         "https://todos-express-facebook.onrender.com/oauth2/redirect/facebook",
       state: true,
