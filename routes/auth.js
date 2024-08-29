@@ -35,8 +35,11 @@ passport.use(
     function (accessToken, refreshToken, profile, cb) {
       console.log("profile", profile);
       var user = {
-        id: 1,
-        name: profile.displayName,
+        id: profile.id,
+        displayName: profile.displayName,
+        username: profile.emails[0].value,
+        emails: profile.emails,
+        photos: profile.photos,
       };
       return cb(null, user);
     }
@@ -47,7 +50,7 @@ passport.use(
   new FacebookStrategy(
     {
       clientID: process.env["FACEBOOK_CLIENT_ID_TEST"],
-      clientSecret: process.env["FACEBOOK_CLIENT_SECRET"],
+      clientSecret: process.env["FACEBOOK_CLIENT_SECRET_TEST"],
       callbackURL: "/oauth2/redirect/facebook",
       state: true,
     },
@@ -149,7 +152,7 @@ router.get(
 
 router.get(
   "/login/federated/google",
-  passport.authenticate("google", { scope: ["profile"] })
+  passport.authenticate("google", { scope: ["profile", "email"] })
 );
 
 router.get(
